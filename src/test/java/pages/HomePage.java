@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class HomePage {
 
     public HomePage open() {
-        Selenide.open("/");
+        Selenide.open("/index.php");
         return this;
     }
 

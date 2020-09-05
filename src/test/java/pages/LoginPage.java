@@ -1,12 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
     public LoginPage open() {
-        Selenide.open("?/controller=authentication&back=my-account");
+        Selenide.open("/index.php?controller=authentication&back=my-account");
         return this;
     }
 
@@ -15,5 +17,9 @@ public class LoginPage {
         $("input#passwd").setValue(password);
         $("#SubmitLogin").click();
         return this;
+    }
+
+    public SelenideElement getAlertDanger() {
+        return $(".alert-danger li");
     }
 }

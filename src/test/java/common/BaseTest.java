@@ -12,7 +12,7 @@ public class BaseTest {
     @BeforeMethod
     public void start() {
         Configuration.browser = "chrome";
-        Configuration.baseUrl = "http://automationpractice.com/index.php";
+        Configuration.baseUrl = "http://automationpractice.com";
         Configuration.timeout = 10000;
 
         home = new HomePage();
