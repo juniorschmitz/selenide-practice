@@ -3,11 +3,11 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 import pages.LoginPage;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.text;
 
 public class LoginCucumber {
     private String email;
@@ -41,5 +41,17 @@ public class LoginCucumber {
     @Then("I should see my user logged")
     public void should_see_logged_user(String string) {
         home.getLogoutButton().shouldBe(visible);
+    }
+
+    @Given("I try to login with email {string} and password {string}")
+    public void i_try_to_login_with_email_and_password(String email, String password) {
+        home    .open()
+                .accessLogin()
+                .doLogin(email, password);
+    }
+
+    @Then("I should see the message {string}")
+    public void i_should_see_the_message(String message) {
+        login.getAlertDanger().shouldHave(text(message));
     }
 }
